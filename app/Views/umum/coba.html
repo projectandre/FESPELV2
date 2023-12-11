@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="countdown"></div>
+
+
+    <script>
+        // Tanggal dan waktu awal (misalnya, 60 detik dari sekarang)
+        var countdownDate = new Date();
+        countdownDate.setSeconds(countdownDate.getSeconds() + 60);
+
+        // Perbarui hitungan mundur setiap 1 detik
+        var countdown = setInterval(function () {
+            var now = new Date().getTime();
+            var distance = countdownDate - now;
+
+            // Hitung waktu yang tersisa
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Tampilkan hasilnya di elemen HTML dengan ID "countdown"
+            document.getElementById("countdown").innerHTML = "Hitungan mundur: " + seconds + " detik";
+
+            // Hentikan hitungan mundur jika waktu telah habis
+            if (distance < 0) {
+                clearInterval(countdown);
+                document.getElementById("countdown").innerHTML = "Waktu telah habis!";
+            }
+        }, 1000); // Perbarui setiap 1 detik
+    </script>
+
+</body>
+
+</html>
